@@ -8,7 +8,4 @@ buttonSearch.addEventListener("click",() => {
 
 close.addEventListener("click", () => {
     modal.classList.add("hide")
-
 })
-
-// parei em 1:25:17 https://youtu.be/b_u7zeg2LAM
