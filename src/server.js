@@ -4,21 +4,30 @@ const server = express()
 //Configurar pasta public
 server.use(express.static("public"))
 
+//Utilizando Template engine
+const nunjucks = require("nunjucks")
+nunjucks.configure("src/views",{
+    express: server,
+    noCache: true
+})
+
 //Configurar Routas.
 
 //Página Inicial
 //req: requisição
 //res: resposta
 server.get("/", (req, res) => {
-    res.sendFile(__dirname + "/views/index.html")
+    return res.render("index.html",{
+        title: "Um título"
+    })
 })
 
-server.get("/create-point", (req, res) => {
-    res.sendFile(__dirname + "/views/create-point.html")
+server.get("/create", (req, res) => {
+    return res.render("create-point.html")
 })
 
-server.get("/search-results", (req, res) => {
-    res.sendFile(__dirname + "/views/search-results.html")
+server.get("/search", (req, res) => {
+    return res.render("search-results.html")
 })
 
 //Ligar o servidor.
